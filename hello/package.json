@@ -1,0 +1,31 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "helloworld",
+  "main": "zhaohong.js",
+  "scripts": {
+    "test": "node zhaohong.js",
+    "start": "node zhaohong.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clarkkentzh/nodejs.git"
+  },
+  "keywords": [
+    "helloworld"
+  ],
+  "author": "赵宏",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clarkkentzh/nodejs/issues"
+  },
+  "homepage": "https://github.com/clarkkentzh/nodejs#readme",
+  "devDependencies": {
+    "express": "^4.15.3",
+    "pm2": "^2.5.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "pm2": "^2.5.0"
+  }
+}
