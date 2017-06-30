@@ -5,8 +5,8 @@ fs.open("texts.md","r",(err,fd) => {
     console.log(err);
   }
   else{
-    var buf = new Buffer(48);
-    fs.read(fd,buf,0,24,0,(err,br,buffer) => {
+    var buf = new Buffer(8);
+    fs.read(fd,buf,0,8,0,(err,br,buffer) => {
       if(err){
         console.log(err);
         fs.close(fd,(err) => {
@@ -15,8 +15,9 @@ fs.open("texts.md","r",(err,fd) => {
           }
         });
       }
-      console.log("*****",buf);
-      console.log(buffer);
+  //buffer没有读取到文件时也有一连串字
+      console.log(buffer);  //buffer属于回调函数
+      console.log("*****",buf);  //buf是事件里的
       console.log(buffer.length);
       console.log(br);
       fs.close(fd,(err) => {

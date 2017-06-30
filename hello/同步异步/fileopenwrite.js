@@ -13,7 +13,7 @@ fs.open("write.md","w",(err,fd) => {
           }
         });
       }else {
-        console.log(writen);
+        console.log(writen); //传入的字符串被写入多少字节
         console.log(string);
         fs.close(fd,(err) => {
           if(err){

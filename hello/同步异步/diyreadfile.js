@@ -1,6 +1,6 @@
 var fs = require("fs");
 var util = require("util");
-var kMaxLength = require('smalloc').kMaxLength;
+// var kMaxLength = require('smalloc').kMaxLength;
 
 function myerr() {
   if (DEBUG) {
@@ -22,7 +22,7 @@ function myerr() {
 }
 
 function maycallback(cb){
-  return util.ifFunction(cb) ? cb : myerr();
+  return util.isFunction(cb) ? cb : myerr();
 }
 
 function assencoding(encoding){
@@ -63,7 +63,7 @@ var myread = function(path,en,callback_){
     if(err) {
       callback(err);
     }
-    fs.stat(fd,function(err,st){
+    fs.fstat(fd,function(err,st){
       if(err) {
         fs.close(fd,function(){
           callback(err);
@@ -74,14 +74,14 @@ var myread = function(path,en,callback_){
         buffers = [];
         return read();
       }
-      if (size > kMaxLength) {
-       var err = new RangeError('File size is greater than possible Buffer: ' +
-           '0x3FFFFFFF bytes');
-       return fs.close(fd, function() {
-         callback(err);
-       });
-      }
-      buffer = new Buffer();
+      // if (size > kMaxLength) {
+      //  var err = new RangeError('File size is greater than possible Buffer: ' +
+      //      '0x3FFFFFFF bytes');
+      //  return fs.close(fd, function() {
+      //    callback(err);
+      //  });
+      // }
+      buffer = new Buffer(size);
       read();
     });
   });
@@ -107,8 +107,12 @@ var myread = function(path,en,callback_){
 
     pos += bytesRead;
     if (size !== 0) {
-      if (pos === size) close();
-      else read();
+      if (pos === size){
+        close();
+      }
+      else{
+        read();
+      }
     } else {
       // unknown size, just read until we don't get bytes.
       buffers.push(buffer.slice(0, bytesRead));
@@ -119,7 +123,6 @@ var myread = function(path,en,callback_){
   function close() {
     fs.close(fd, function(er) {
       if (size === 0) {
-        // collected the data into the buffers list.
         buffer = Buffer.concat(buffers, pos);
       } else if (pos < size) {
         buffer = buffer.slice(0, pos);
@@ -130,3 +133,11 @@ var myread = function(path,en,callback_){
     });
   }
 }
+
+myread("text.md","utf8",function(err,data){
+  if(err) {
+    console.log(err);
+  }else {
+    console.log(data);
+  }
+});
