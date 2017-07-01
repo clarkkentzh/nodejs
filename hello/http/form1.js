@@ -32,6 +32,7 @@ http.createServer(function(req,rep){
   }
 }).listen(2500);
 
+//req.method是查询请求方式
 //当submit点击提交以后，然后触发request的post请求，然后系统用request的data事件将数据传到回调函数，然后就可以用数据执行一系列操作
 
 //四种事件

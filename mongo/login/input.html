@@ -8,12 +8,13 @@
   <title>Document</title>
   <style>
   body {
-    background:
+    background:url("http://i4.piimg.com/1949/c1f8b823041cfaa7.jpg");
   }
   .head {
     width:40%;
     height:400px;
     background: lightblue;
+    opacity:0.8;
     border:1px solid #fff;
     margin:100px auto;
   }
@@ -28,16 +29,15 @@
 </head>
 <body>
   <div class="head">
-
     <form class="container form" method="POST" action="/success">
       <h1>登录页面</h1>
       <div class="form-group">
         <label for="exampleInputEmail1">账号:</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username" minlength="5" maxlength="10">
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username" minlength="5" maxlength="10" required>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">密码:</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="passwd">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="passwd" required>
       </div>
       <button type="submit" class="btn btn-danger">登录</button>
       <button type="reset" class="btn btn-danger">重置</button>

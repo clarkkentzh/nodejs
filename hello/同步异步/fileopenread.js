@@ -19,7 +19,7 @@ fs.open("texts.md","r",(err,fd) => {
       console.log(buffer);  //buffer属于回调函数
       console.log("*****",buf);  //buf是事件里的
       console.log(buffer.length);
-      console.log(br);
+      console.log(br);   //读到的字节数
       fs.close(fd,(err) => {
         if(err){
           console.log(err);

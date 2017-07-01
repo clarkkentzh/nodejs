@@ -5,7 +5,7 @@ fs.access("node",fs.constants.F_OK,(err) => {
 
 
   if(err){
-    console.log(err);
+    console.log("no dir");
   }
   else {
     console.log("have dir");

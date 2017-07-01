@@ -1,6 +1,7 @@
 var fs = require("fs");
 
-fs.stat("/bin",(err,stats) => {
+//stat查询文件或目录的信息
+fs.stat("./text.md",(err,stats) => {
   console.log(stats);
   if(err){
     console.log(err);
