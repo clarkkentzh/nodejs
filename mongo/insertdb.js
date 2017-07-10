@@ -4,13 +4,12 @@ var url = "mongodb://localhost:27017/zhao";
 var insertdb = function(db,callback){
 
   var three = db.collection("three");
-  var datas = [{"one":1},{"two":2}];
+  var datas = ({"one":1});
   three.insert(datas,function(err,doc){
     if(err){
       console.log(err);
       return;
     }else {
-
       callback(doc);
     }
   })

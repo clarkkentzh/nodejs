@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo socket.io</title>
+  <script src="http://cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
+  <script>
+  var socket = io();
+  socket.on('first', function(data){
+    console.log("socket.on");
+    console.log(data);
+    socket.emit('two', { my: 'data'});
+  });
+  </script>
+</head>
+<body>
+<h1>Welcome socket.io.</h1>
+
+</body>
+</html>
