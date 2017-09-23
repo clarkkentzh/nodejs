@@ -61,17 +61,26 @@
     4、Presto内核：目前只有Opera浏览器采用该内核。
 ```
 
-**九、cookie和session的区别。**
+**九.介绍一下你对浏览器内核的理解？**
+```shell
+    主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。
+    渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。
+    JS引擎则：解析和执行javascript来实现网页的动态效果。
+```
+
+**十、cookie和session的区别。**
 ```shell
     ① cookie数据存在客户的浏览器上，session数据存放在服务器端 ② cookie不安全 ③ session会在一定时间内保存在服务器端，访问增多，占用服务器性能。 ④ 单个cookie保存的数据不超过4K。
 ```
 
-**十、请描述一下 cookies，sessionStorage 和 localStorage 的区别？**
+**十一、请描述一下 cookies，sessionStorage 和 localStorage 的区别？**
 ```shell
-    cookie在浏览器和服务器间来回传递。 sessionStorage和localStorage不会; sessionStorage和localStorage的存储空间更大； sessionStorage和localStorage有更多丰富易用的接口； sessionStorage和localStorage各自独立的存储空间；
+    cookie在浏览器和服务器间来回传递。 sessionStorage和localStorage不会; sessionStorage和localStorage的存储空间更大；
+    sessionStorage和localStorage有更多丰富易用的接口；
+    sessionStorage和localStorage各自独立的存储空间；
 ```
 
-**十一、nodejs的优缺点。**
+**十二、nodejs的优缺点。**
 ```shell
     优点：
     可以解决高并发，它是单线程，当访问量很多时，将访问者分配到不同的内存中，不同的内存区做不同的事，以快速解决这个线程。采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。不同的事件分配给不同的线程，避免了排队的拥挤，当一个线程完成后将结果返回给主线程，但是因为是单线程，所以每次接收到的结果只有一个，这个结果处理完成后才能接收下一个结果，这样拥挤情况有所缓解，但是事件多到一定程度还是会需要较长时间。
@@ -86,7 +95,7 @@
     (2):把多个进程绑在一个端口上,用cluster模块创建子进程。
 ```
 
-**十二、npm和nvm的区别及使用。**
+**十三、npm和nvm的区别及使用。**
 ```js
     安装nodejs：
     $ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -113,7 +122,7 @@
 ```
 
 
-**十三、什么是阻塞和非阻塞？**
+**十四、什么是阻塞和非阻塞？**
 ```shell
     阻塞：阻塞调用是是调用之后一定要等到系统内核层面完成所有事件操作后, 调用才结束。
 
@@ -125,27 +134,27 @@
     而在非阻塞模式下，线程不会被I/O阻塞，永远在利用CPU。非阻塞IO和阻塞IO的差别为调用之后会立即返回，非阻塞IO返回后，CPU的时间片可以处理其他事件，没有浪费时间，不过非阻塞的缺点是返回的并不一定是结果，而是当前调用的状态，为了获得完整的数据，应用程序需要重复调用IO操作来确认是否完成，这就是轮询技术。
 ```
 
-**十四、同步和异步。**
+**十五、同步和异步。**
 ```shell
     同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回。也就是必须一件一件事做,等前一件做完了才能做下一件事。
     异步，异步的概念和同步相对。当一个异步过程调用发出后，不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。异步IO就是把IO提交给系统，让系统替你做，做完了再用某种方式通知你, 通过信号，或者其他异步方式通知。应用程序可以去做其他的事情。
 ```  
 
-**十五、react的实现原理。**
+**十六、react的实现原理。**
 ```shell
     当组件 state 有更改时，React会自动调用组件的render()方法重新渲染组件的UI。
     如果大面积的操作DOM，性能是一个很大的问题，所以React实现了一个虚拟DOM，组件的DOM结构映射到这个虚拟DOM上，当要更新组件时，React会再实现一个虚拟DOM,然后会实现一个diff算法比较两个虚拟DOM并寻找要变更的DOM节点，最后把这个合格修改更新到浏览器实际的DOM节点上，所以实际上不是重新渲染整个DOM树。
     虚拟DOM 是一个纯粹的JS数据结构，可能是树结构也可能是其他结构，性能比原生DOM快很多。
 ```
 
-**十六、react的组件更新原理。**
+**十七、react的组件更新原理。**
 ```shell
     1.两个相同组件产生类似的DOM结构，不同的组件产生不同的DOM结构；
     2.对于同一层次的一组子节点，它们可以通过唯一的key进行区分。
     节点不同时，react的处理是删除
 ```
 
-**十七、react组件的生命周期。**
+**十八、react组件的生命周期。**
 ```shell
     1.componentWillMount(): 在渲染前调用, 在客户端也在服务端.
     2.componentDidMount(): 在第一次渲染后调用，只在客户端。之后组件已经生成了对应的DOM结构，可以通过this.getDOMNode()来进行访问。 如果你想和其他JavaScript框架一起使用，可以在这个方法中调用setTimeout, setInterval或者发送AJAX请求等操作(防止异部操作阻塞UI)。
@@ -154,7 +163,7 @@
     5.componentWileUnmount(): 在组件从 DOM 中移除的时候立刻被调用。
 ```
 
-**十八、props和state的区别。**
+**十九、props和state的区别。**
 ```shell
     由于this.props和this.state都用于描述组件特性, 可能会产生混淆. 一个简单的区分方法是, this.props表示那些一旦定义, 就不再改变的特性, 而this.state是会随着用户互动而产生变化的特性.
 ```
